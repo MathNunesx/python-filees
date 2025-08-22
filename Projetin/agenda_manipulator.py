@@ -88,3 +88,17 @@ def add_contact_metods(contact_metods:dict, include_metod:str, include_valor:str
 
 add_contact_metods(agenda["Riveraldo"], "endereco", "Rua Blue River")
 print(agenda_for_text(**agenda))
+
+
+def show_menu():
+    print("\n\n")
+    print("1 - Incluir contato na agenda")
+    print("2 - Incluir uma forma de contato")
+    print("3 - Alterar o nome do contato")
+    print("4 - Alterar uma forma de contato")
+    print("5 - Exibir um contato")
+    print("6 - Exibir toda a agenda")
+    print("7 - Excluir contato")
+    print("8 - Sair")
+    print("\n\n")
+
