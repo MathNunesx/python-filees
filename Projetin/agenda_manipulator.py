@@ -60,3 +60,31 @@ def contact_metod_change(contact_list: list, old_valor:str, new_valor:str):
 
 contact_metod_change(agenda["Pessoa 1"]["telefone"], "11 1234-5678","123")
 print(agenda_for_text(**agenda))
+
+def contact_delete(agenda:dict, contact_name:str):
+    if contact_name in agenda.keys():
+        agenda.pop(contact_name)
+        return True
+    return False
+
+contact_delete(agenda, "Pessoa 1")
+print(agenda_for_text(**agenda))
+
+def add_contact(agenda:dict, contact_name:str, **contact_metods):
+    agenda[contact_name] =  contact_metods
+
+add_contact(agenda, "Riveraldo", telefone=["114082"], email=["river@email.com"])
+print(agenda_for_text(**agenda))
+
+
+def add_contact_metods(contact_metods:dict, include_metod:str, include_valor:str):
+    if include_metod in contact_metods.keys():
+        contact_metods[include_metod].append(include_valor)
+        return True
+    elif include_metod in contato_sup:
+        contact_metods[include_metod] = [include_valor]
+        return True
+    return False
+
+add_contact_metods(agenda["Riveraldo"], "endereco", "Rua Blue River")
+print(agenda_for_text(**agenda))
