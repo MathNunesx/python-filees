@@ -38,3 +38,25 @@ def agenda_for_text(**agenda_completa):
 
 
 print(agenda_for_text(**agenda))
+
+def name_contact_change(agenda_original:dict, original_name:str, update_name:str):
+    if original_name in agenda_original.keys():
+        contacts_copy = agenda_original[original_name].copy()
+        agenda_original.pop(original_name)
+        agenda_original[update_name] = contacts_copy
+        return True
+    return False
+
+name_contact_change(agenda, "Pessoa 2", "Super Pessoa")
+print(agenda_for_text(**agenda))
+
+def contact_metod_change(contact_list: list, old_valor:str, new_valor:str):
+    if old_valor in contact_list:
+        old_valor_position = contact_list.index(old_valor)
+        contact_list.pop(old_valor_position)
+        contact_list.insert(old_valor_position, new_valor)
+        return True
+    return False
+
+contact_metod_change(agenda["Pessoa 1"]["telefone"], "11 1234-5678","123")
+print(agenda_for_text(**agenda))
